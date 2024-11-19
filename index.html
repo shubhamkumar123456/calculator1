@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            color: aqua;
+            flex-direction: column;
+        }
+        .container{
+            width: 350px;
+            height: 500px;
+            background-color: aqua;
+            display: flex;
+            flex-direction: column;
+        }
+        #input{
+            width: 100%;
+            padding: 10px;
+            text-align: end;
+            font-size: 25px;
+            /* margin-right: 0; */
+            /* right: 0; */
+        }
+        .buttonBox{
+            /* gap: 30px; */
+            display: grid;
+            /* gap: 20px; */
+            grid-template-columns: repeat(3,auto);
+          background-color: tomato;
+          height: 100%;
+        }
+        button{
+            font-size: 25px onclick="buttonClicked()";
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculator application</h1>
+    <div class="container">
+        <input  id="input" type="text" placeholder="0">
+        <div class="buttonBox">
+            <button onclick="clearData()">C</button>
+            <button onclick="buttonClicked('*')">X</button>
+            <button onclick="buttonClicked('+')">+</button>
+            <button onclick="buttonClicked(9)">9</button>
+            <button onclick="buttonClicked(8)">8</button>
+            <button onclick="buttonClicked(7)">7</button>
+            <button onclick="buttonClicked(6)">6</button>
+            <button onclick="buttonClicked(5)">5</button>
+            <button onclick="buttonClicked(4)">4</button>
+            <button onclick="buttonClicked(3)">3</button>
+            <button onclick="buttonClicked(2)">2</button>
+            <button onclick="buttonClicked(1)">1</button>
+            <button onclick="buttonClicked(0)">0</button>
+            <button onclick="buttonClicked('.')">.</button>
+            <button onclick="buttonClicked('/')">/</button>
+            <button onclick="buttonClicked('%')">%</button>
+            <button onclick="buttonClicked('-')">-</button>
+            <button onclick="solve()">=</button>
+        </div>
+    </div>
+
+    <script>
+
+        let inputTag = document.querySelector('#input')
+        console.log(inputTag)
+        let bag = ''
+        function buttonClicked(digit){
+           bag = bag + digit
+           inputTag.value = bag
+        }
+
+        // let x = 7+8 
+
+        // let text = '7+8'
+        // console.log(text)
+
+         function solve(){
+            let ans = eval(bag)
+            console.log(ans)
+            inputTag.value = ans
+         }
+
+         function clearData(){
+            console.log("running clear")
+            bag=''
+            inputTag.value=''
+         }
+
+    </script>
+</body>
+</html>
